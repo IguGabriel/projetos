@@ -37,10 +37,10 @@ Para efetuar o logout, volte para a página principal e simplesmente clique em l
 
 Aqui vão alguns exemplos de ideias que eu tinha, mas não foram implementadas por causa da minha incapacidade/tempo:
 
-- Estilização
+ Estilização
 Além das cores, eu queria trabalhar com imagens/logo de cada marca. Gostaria de que a forma de avaliação fosse mais estilizada em formas de estrelas e com o uso do JavaScript.
 
-- Funcionalidades
+ Funcionalidades
 Minha vontade era colocar uma personalização para cada login. O usuário teria sua foto de perfil e mudaria de acordo com seu gosto. Queria ter adicionado uma opção de resposta de comentários, assim tendo uma interação entre os usuários.
 
 Considerações finais:
