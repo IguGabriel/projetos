@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Empresa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #e8f0fe; /* Cor de fundo mais fria */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            max-width: 800px; /* Largura máxima para manter o conteúdo legível */
+        }
+
+        header {
+            background: #5c6bc0; /* Cor mais fria */
+            color: white;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #3949ab 3px solid; /* Cor mais escura para a borda */
+        }
+
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+            text-align: center; /* Centraliza os itens da lista */
+        }
+
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+
+        header #branding {
+            float: none;
+            display: inline-block; /* Centraliza a marcação */
+        }
+
+        header #branding h1 {
+            margin: 0;
+        }
+
+        header nav {
+            float: none;
+            display: inline-block; /* Centraliza a navegação */
+        }
+
+        header .highlight, header .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .avaliacao {
+            background: #cfd8dc; /* Cor mais fria */
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+
+        .avaliacao p {
+            font-size: 14px;
+        }
+
+        button {
+            background: #4fc3f7; /* Cor mais fria */
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #29b6f6; /* Cor mais escura ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="branding">
+            <h1>{{ empresa.nome }}</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Voltar ao Início</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="container">
+        <p>{{ empresa.descricao }}</p>
+        <!-- Seção de Avaliações -->
+        <h2>Avaliações</h2>
+        {% for avaliacao in empresa.avaliacao_set.all %}
+            <div class="avaliacao">
+                <strong>{{ avaliacao.usuario.username }}</strong>
+                <p>Nota: {{ avaliacao.nota }}</p>
+                <p>{{ avaliacao.comentario }}</p>
+            </div>
+        {% empty %}
+            <p>Nenhuma avaliação ainda.</p>
+        {% endfor %}
+
+        <!-- Formulário para nova avaliação -->
+        <!-- Certifique-se de que o usuário está logado para mostrar este formulário -->
+        {% if user.is_authenticated %}
+            <form action="{% url 'avaliar_empresa' empresa.id %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        {% endif %}
+    </section>
+</body>
+</html>
