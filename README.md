@@ -45,8 +45,3 @@ Funcionalidades
 
 
 Minha vontade era colocar uma personalização para cada login. O usuário teria sua foto de perfil e mudaria de acordo com seu gosto. Queria ter adicionado uma opção de resposta de comentários, assim tendo uma interação entre os usuários.
-
-Considerações finais:
-
-
-Gostei bastante do projeto. Ainda que simples, me descobri e fui mais longe do que pensei que conseguiria. Aqui fica o meu agradecimento a toda equipe do 'Seu Cliente Oculto' pela clareza, suporte e por ter me dado a oportunidade de participar do processo."
